@@ -565,9 +565,9 @@ const adminCallAutoConfirmBase=adminCall;adminCall=async function(action='snapsh
 
 /* CONTROLE DE MESAS E COMANDAS */
 const TABLES_KEY='gulas_tables_v1',TABLE_HISTORY_KEY='gulas_table_history_v1';
-function tableState(){try{const s=JSON.parse(localStorage.getItem(TABLES_KEY)||'null');if(s&&Array.isArray(s.tables))return s}catch{}return{count:12,tables:Array.from({length:12},(_,i)=>({number:i+1,status:'free',customer:'',opened_at:null,orders:[]}))}}
+function tableState(){try{const s=JSON.parse(localStorage.getItem(TABLES_KEY)||'null');if(s&&Array.isArray(s.tables))return s}catch{}return{count:40,tables:Array.from({length:40},(_,i)=>({number:i+1,status:'free',customer:'',opened_at:null,orders:[]}))}}
 function saveTableState(s){localStorage.setItem(TABLES_KEY,JSON.stringify(s))}
-function normalizeTables(s){s.count=Math.max(1,Math.min(50,Number(s.count)||12));for(let i=1;i<=s.count;i++)if(!s.tables.some(t=>Number(t.number)===i))s.tables.push({number:i,status:'free',customer:'',opened_at:null,orders:[]});s.tables=s.tables.filter(t=>Number(t.number)<=s.count);return s}
+function normalizeTables(s){s.count=Math.max(1,Math.min(50,Number(s.count)||40));for(let i=1;i<=s.count;i++)if(!s.tables.some(t=>Number(t.number)===i))s.tables.push({number:i,status:'free',customer:'',opened_at:null,orders:[]});s.tables=s.tables.filter(t=>Number(t.number)<=s.count);return s}
 function tableOrders(table){const ids=new Set((table.orders||[]).map(String));return(admin?.orders||[]).filter(o=>ids.has(String(o.id)))}
 function tableTotal(table){return tableOrders(table).filter(o=>o.status!=='cancelado').reduce((sum,o)=>sum+Number(o.total||0),0)}
 function tableElapsed(table){if(!table.opened_at)return'';const min=Math.max(0,Math.floor((Date.now()-Date.parse(table.opened_at))/60000));return min<60?`${min} min`:`${Math.floor(min/60)}h ${min%60}min`}
@@ -2485,6 +2485,31 @@ const checkNewOrdersTableEditBase=checkNewOrders;checkNewOrders=async function()
   }
   .sheet.full:has(.adminHead)>.admbar{top:86px!important}
 }
+</style>
+<style id="gulas-adm-desktop-top-v1">
+/* ADM desktop: informações principais no topo e funções em colunas. */
+@media (min-width:900px){
+  .overlay:has(.sheet.full .adminHead){align-items:flex-start;padding:12px}
+  .sheet.full:has(.adminHead){width:min(98vw,1560px)!important;max-width:1560px!important;height:calc(100vh - 24px)!important;max-height:calc(100vh - 24px)!important;border-radius:20px!important;padding:18px 24px 28px!important}
+  .sheet.full:has(.adminHead)>.adminHead{top:-18px!important;margin:0 -24px 12px!important;padding:14px 24px 12px!important;min-height:66px!important}
+  .sheet.full:has(.adminHead) .adminHead h2{font-size:27px!important}
+  .sheet.full:has(.adminHead) .compactMetrics{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important;margin:0 0 8px!important}
+  .sheet.full:has(.adminHead) .compactMetrics .metric{min-height:74px!important;padding:12px 15px!important;border-radius:13px!important}
+  .sheet.full:has(.adminHead) .compactMetrics .metric b{font-size:24px!important}
+  .sheet.full:has(.adminHead) .compactMetrics .metric span{margin-top:5px!important}
+  .sheet.full:has(.adminHead) .paymentMetrics{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important;margin:0 0 10px!important}
+  .sheet.full:has(.adminHead) .paymentMetric{min-height:66px!important;padding:10px 12px 9px 46px!important;border-radius:13px!important}
+  .sheet.full:has(.adminHead) .paymentMetric:before{top:11px!important;left:12px!important}
+  .sheet.full:has(.adminHead) .paymentMetric b{margin-top:3px!important;font-size:17px!important}
+  .sheet.full:has(.adminHead)>.admbar{position:relative!important;top:auto!important;display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:7px!important;margin:0 0 12px!important;padding:0!important;background:transparent!important;backdrop-filter:none!important}
+  .sheet.full:has(.adminHead)>.admbar button{min-height:39px!important;padding:7px 8px!important;border-radius:10px!important;font-size:11px!important}
+  .sheet.full:has(.adminHead) #admContent{margin-top:0!important}
+  .sheet.full:has(.adminHead) #admContent>.alertControl{margin-top:0!important}
+  .sheet.full:has(.adminHead) .orderToolbar{margin-top:4px!important}
+  .sheet.full:has(.adminHead) .orderInfoGrid{grid-template-columns:1fr 1fr!important}
+  .sheet.full:has(.adminHead) .statusWorkflow,.sheet.full:has(.adminHead) .orderactions,.sheet.full:has(.adminHead) .printActions{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media (min-width:1280px){.sheet.full:has(.adminHead)>.admbar{grid-template-columns:repeat(9,minmax(0,1fr))!important}}
 </style>
 </body>
 </html>
