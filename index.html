@@ -2442,5 +2442,32 @@ const checkNewOrdersTableEditBase=checkNewOrders;checkNewOrders=async function()
   outline-offset:2px;
 }
 </style>
+<style id="gulas-mobile-admin-header-v31">
+/* Mantém o título do ADM totalmente visível no topo dos celulares. */
+.sheet.full:has(.adminHead)>.adminHead{
+  top:0!important;
+  margin-top:0!important;
+}
+@media(max-width:760px){
+  .sheet.full:has(.adminHead){padding-top:0!important}
+  .sheet.full:has(.adminHead)>.adminHead{
+    top:0!important;
+    margin:0 -14px 14px!important;
+    padding:18px 18px 15px!important;
+    min-height:86px!important;
+    align-items:center!important;
+  }
+  .sheet.full:has(.adminHead) .adminHead h2{
+    display:block!important;
+    margin:0!important;
+    color:#171a1e!important;
+    -webkit-text-fill-color:#171a1e!important;
+    line-height:1.12!important;
+    opacity:1!important;
+    visibility:visible!important;
+  }
+  .sheet.full:has(.adminHead)>.admbar{top:86px!important}
+}
+</style>
 </body>
 </html>
