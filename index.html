@@ -2396,5 +2396,51 @@ const checkNewOrdersTableEditBase=checkNewOrders;checkNewOrders=async function()
 </style>
 
 
+<style id="gulas-black-buttons-v30">
+/* Identidade Gulas: botões em preto/grafite, com contraste forte e leitura garantida. */
+:root{--brand:#121314!important;--brand-text:#fff!important}
+.primary,.add,.cartbtn,.chip.on,.admbar button.on,
+.storeNowBtn.openNow,.mainPrint,.promoQuick,.promotionAdminRow .primary,
+.loyaltyParticipantsButton,.packReadyBtn,.commandActions button:first-child{
+  background:linear-gradient(135deg,#25272a 0%,#08090a 100%)!important;
+  border-color:#08090a!important;
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  text-shadow:none!important;
+  box-shadow:0 7px 18px rgba(0,0,0,.20)!important;
+}
+.sheet.full:has(.adminHead)>.admbar button.on,
+.sheet.full:has(.adminHead) .admbar button.on,
+.manualCounterButton.on,.manualOrderTypes [data-counter-order].on{
+  background:linear-gradient(135deg,#25272a 0%,#08090a 100%)!important;
+  border-color:#08090a!important;
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  opacity:1!important;
+  visibility:visible!important;
+  box-shadow:0 6px 15px rgba(0,0,0,.22)!important;
+}
+.primary *,.add *,.cartbtn *,.chip.on *,.admbar button.on *,
+.mainPrint *,.promoQuick *,.promotionAdminRow .primary *,
+.loyaltyParticipantsButton *,.packReadyBtn *{
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  opacity:1!important;
+}
+.primary:disabled,.add:disabled,.cartbtn:disabled{
+  background:#55585c!important;
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  opacity:.72!important;
+}
+.primary:active,.add:active,.cartbtn:active,.admbar button.on:active{
+  background:#000!important;
+  transform:translateY(1px);
+}
+.primary:focus-visible,.add:focus-visible,.cartbtn:focus-visible,.admbar button:focus-visible{
+  outline:3px solid rgba(35,35,35,.28)!important;
+  outline-offset:2px;
+}
+</style>
 </body>
 </html>
