@@ -2444,12 +2444,29 @@ const checkNewOrdersTableEditBase=checkNewOrders;checkNewOrders=async function()
 </style>
 <style id="gulas-mobile-admin-header-v31">
 /* Mantém o título do ADM totalmente visível no topo dos celulares. */
+.overlay:has(.sheet.full){
+  height:100dvh!important;
+  min-height:100dvh!important;
+  max-height:100dvh!important;
+  overflow:hidden!important;
+}
+.overlay:has(.sheet.full)>.sheet.full{
+  height:100dvh!important;
+  min-height:0!important;
+  max-height:100dvh!important;
+  align-self:flex-end!important;
+}
 .sheet.full:has(.adminHead)>.adminHead{
   top:0!important;
   margin-top:0!important;
 }
 @media(max-width:760px){
-  .sheet.full:has(.adminHead){padding-top:0!important}
+  .sheet.full:has(.adminHead){
+    height:100dvh!important;
+    max-height:100dvh!important;
+    padding-top:0!important;
+    overscroll-behavior:contain;
+  }
   .sheet.full:has(.adminHead)>.adminHead{
     top:0!important;
     margin:0 -14px 14px!important;
