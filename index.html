@@ -841,7 +841,7 @@ const openAdminIdentityBase=openAdmin;openAdmin=function(){
   openAdminIdentityBase();
   const login=$('.loginbox'),pinField=$('#adminPin')?.closest('.field');
   if(login&&pinField&&!$('#adminIdentity')){
-    pinField.insertAdjacentHTML('beforebegin',`<div class="field adminIdentityField"><label>Identificação do administrador</label><input id="adminIdentity" class="in" value="Romário Gulas ADM" readonly aria-readonly="true"></div>`);
+    pinField.insertAdjacentHTML('beforebegin',`<div class="field adminIdentityField"><label>Identificação do administrador</label><input id="adminIdentity" class="in" value="Gulas ADM" readonly aria-readonly="true"></div>`);
     login.insertAdjacentHTML('beforeend','<div class="internalCopyright loginCopyright">© 2026 Gulas Hamburgueria<br>Todos os direitos reservados.</div>');
     const title=modalRoot.querySelector('.sheeth h2');if(title)title.textContent='Login da Central ADM';
   }
@@ -851,7 +851,7 @@ function addInternalCopyright(area){
   if(!box||box.querySelector('.internalCopyright'))return;
   box.insertAdjacentHTML('beforeend',`<div class="internalCopyright"><span class="adminOwnerBadge">👤 ${esc(area)}</span><br><br>© 2026 Gulas Hamburgueria • Todos os direitos reservados.</div>`);
 }
-const renderAdminCopyrightBase=renderAdmin;renderAdmin=function(){const result=renderAdminCopyrightBase();addInternalCopyright('Romário Gulas ADM');return result};
+const renderAdminCopyrightBase=renderAdmin;renderAdmin=function(){const result=renderAdminCopyrightBase();addInternalCopyright('Gulas ADM');return result};
 const renderEmployeeCopyrightBase=renderEmployeePanel;renderEmployeePanel=function(){const result=renderEmployeeCopyrightBase();addInternalCopyright('Equipe Gulas');return result};
 
 /* Retorno visual global para ações administrativas assíncronas. */
