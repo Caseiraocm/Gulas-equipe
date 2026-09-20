@@ -2578,24 +2578,5 @@ receiptBrowserHtml=function(o){
 })();
 </script>
 
-<style id="gullas-adm-order-cleanup">
-.sheet.full:has(.adminHead) .opsOrder.gullasMoreOptions{margin-top:9px!important;padding-top:0!important;border:1px solid #e0e4e8!important;border-radius:12px;background:#fff;overflow:hidden}
-.sheet.full:has(.adminHead) .opsOrder.gullasMoreOptions>summary{list-style:none;cursor:pointer;padding:11px 13px;color:#59616b;font-size:11px;font-weight:900;text-align:center;user-select:none}
-.sheet.full:has(.adminHead) .opsOrder.gullasMoreOptions>summary::-webkit-details-marker{display:none}
-.sheet.full:has(.adminHead) .opsOrder.gullasMoreOptions>summary:after{content:'  ▾'}
-.sheet.full:has(.adminHead) .opsOrder.gullasMoreOptions[open]>summary:after{content:'  ▴'}
-.sheet.full:has(.adminHead) .opsOrder.gullasMoreOptions .gullasMoreBody{padding:0 11px 11px}
-.sheet.full:has(.adminHead) .opsOrder.gullasMoreOptions .sectionTitle{display:none}
-.sheet.full:has(.adminHead) .opsOrder.gullasMoreOptions .row{gap:7px}
-.sheet.full:has(.adminHead) .opsOrder.gullasMoreOptions button{min-height:38px;padding:9px 10px;font-size:10px}
-@media(max-width:520px){.sheet.full:has(.adminHead) .opsOrder.gullasMoreOptions .row{grid-template-columns:1fr 1fr}}
-</style>
-<script id="gullas-adm-order-cleanup-js">
-(()=>{
- const clean=()=>{document.querySelectorAll('.sheet.full .orderBody .opsOrder').forEach(box=>{if(box.classList.contains('gullasMoreOptions'))return;const details=document.createElement('details');details.className=box.className+' gullasMoreOptions';details.innerHTML='<summary>MAIS OPÇÕES</summary><div class="gullasMoreBody">'+box.innerHTML+'</div>';box.replaceWith(details)})};
- new MutationObserver(clean).observe(document.body,{subtree:true,childList:true});
- document.addEventListener('DOMContentLoaded',clean);clean();
-})();
-</script>
 </body>
 </html>
