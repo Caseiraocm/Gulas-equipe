@@ -2511,5 +2511,64 @@ const checkNewOrdersTableEditBase=checkNewOrders;checkNewOrders=async function()
 }
 @media (min-width:1280px){.sheet.full:has(.adminHead)>.admbar{grid-template-columns:repeat(9,minmax(0,1fr))!important}}
 </style>
+<style id="gulas-adm-anota-layout-v2">
+@media (min-width:900px){
+  .sheet.full:has(.adminHead){
+    display:grid!important;
+    grid-template-columns:230px minmax(0,1fr)!important;
+    grid-template-rows:auto auto auto minmax(0,1fr)!important;
+    column-gap:18px!important;
+    align-content:start!important;
+  }
+  .sheet.full:has(.adminHead)>.adminHead{grid-column:1/-1!important;grid-row:1!important}
+  .sheet.full:has(.adminHead)>.compactMetrics{grid-column:2!important;grid-row:2!important}
+  .sheet.full:has(.adminHead)>.paymentMetrics{grid-column:2!important;grid-row:3!important}
+  .sheet.full:has(.adminHead)>.admbar{
+    grid-column:1!important;
+    grid-row:2/5!important;
+    align-self:start!important;
+    position:sticky!important;
+    top:0!important;
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:7px!important;
+    padding:12px!important;
+    margin:0!important;
+    border:1px solid #dfe3e7!important;
+    border-radius:15px!important;
+    background:#fff!important;
+  }
+  .sheet.full:has(.adminHead)>.admbar button{
+    width:100%!important;
+    min-height:42px!important;
+    justify-content:flex-start!important;
+    text-align:left!important;
+    padding:9px 12px!important;
+  }
+  .sheet.full:has(.adminHead)>#admContent{
+    grid-column:2!important;
+    grid-row:4!important;
+    min-width:0!important;
+    margin:0!important;
+  }
+  .sheet.full:has(.adminHead) .orderDetailed{margin-top:10px!important}
+  .sheet.full:has(.adminHead) .orderDetailed>.orderBody{display:block!important}
+  .sheet.full:has(.adminHead) .orderInfoGrid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+  .sheet.full:has(.adminHead) .orderactions,
+  .sheet.full:has(.adminHead) .statusWorkflow,
+  .sheet.full:has(.adminHead) .printActions{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+}
+</style>
+<script id="gulas-adm-open-orders-v2">
+(()=>{
+  const openAdminOrders=()=>{
+    if(innerWidth<900)return;
+    document.querySelectorAll('.sheet.full:has(.adminHead) details.orderDetailed:not(.finishedOrder)').forEach(card=>card.open=true);
+  };
+  new MutationObserver(openAdminOrders).observe(document.body,{childList:true,subtree:true});
+  window.addEventListener('resize',openAdminOrders);
+  setTimeout(openAdminOrders,100);
+})();
+</script>
 </body>
 </html>
