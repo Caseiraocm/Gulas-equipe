@@ -1216,6 +1216,12 @@ const driverToken=decodeURIComponent((location.hash.match(/^#entregador=([^&]+)/
       const advanced=guide.querySelector('.statusAdvancedOptions');
       actions.parentNode.insertBefore(guide,actions);
       advanced.appendChild(actions);
+      /* O fluxo principal acima já controla Preparando, Pronto, Em rota e Entregue.
+         Nesta área secundária deixamos visível somente o cancelamento. */
+      advanced.querySelector('summary').textContent='Cancelar pedido';
+      actions.querySelectorAll('[data-st]').forEach(statusButton=>{
+        if(statusButton.dataset.st!=='cancelado')statusButton.style.display='none';
+      });
       guide.querySelector('.smartNextAction').onclick=event=>{
         const button=event.currentTarget;
         button.disabled=true;
